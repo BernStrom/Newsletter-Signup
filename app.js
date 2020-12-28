@@ -22,9 +22,9 @@ app.post("/", (req, res) => {
 
     const listId = process.env.MAILCHIMP_AUDIENCE_LIST_ID;
     const subscribingUser = {
-        firstName = req.body.firstName,
-        lastName = req.body.lastName,
-        email = req.body.email
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
     };
 
 });
