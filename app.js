@@ -20,13 +20,36 @@ app.get("/", (req, res) => res.sendFile(`${__dirname}/index.html`));
 
 app.post("/", (req, res) => {
 
-    const listId = process.env.MAILCHIMP_AUDIENCE_LIST_ID;
+    const listId = "b3953bf459";
     const subscribingUser = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email
     };
 
+    const userSubscriptionStatus = {
+        email_address: subscribingUser.email,
+        status: "subscribed",
+        merge_fields: {
+            FNAME: subscribingUser.firstName,
+            LNAME: subscribingUser.lastName
+        }
+    };
+
+    const run = async () => {
+        try {
+            await mailchimp.lists.addListMember(listId, userSubscriptionStatus);
+            res.sendFile(`${__dirname}/success.html`);
+        } catch (err) {
+            res.sendFile(`${__dirname}/failure.html`);
+        }
+    }
+
+    run();
 });
 
-app.listen(port, (req, res) => console.log(`Server running on port ${port}`));
+// Redirect success and failure subscription status to homepage
+app.post("/success", (req, res) => res.redirect("/"));
+app.post("/failure", (req, res) => res.redirect("/"));
+
+app.listen(port);
