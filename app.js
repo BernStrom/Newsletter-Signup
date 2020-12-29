@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
-const port = 3000; // Assigns 3000 as the port number.
 const apiKey = process.env.MAILCHIMP_API_KEY; // Access the API key from a secure .env file. 
 
 app.use(express.static("public")); // Serve static files such as styles & images from the public directory.
@@ -57,4 +56,5 @@ app.post("/", (req, res) => {
 app.post("/success", (req, res) => res.redirect("/"));
 app.post("/failure", (req, res) => res.redirect("/"));
 
-app.listen(port); // Server will run on the assigned port number.
+// Server will run on a dynamically assigned port number by Heroku OR run on port number 3000 locally.
+app.listen(process.env.PORT || 3000); 
