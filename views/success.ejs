@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+        <div class="bg-light p-5">
+            <div class="container">
+                <h1 class="display-4 fw-normal">Awesome!</h1>
+                <p class="lead">You've been succesfully signed up to the newsletter. Look forward to lots of awesome content!</p>
+
+                <form action="/success" method="post">
+                    <button class="btn btn-lg btn-success" type="submit" name="button">
+                        Back to Home
+                    </button>
+                </form>
+            </div>
+        </div>
+<%- include('partials/footer') %>
