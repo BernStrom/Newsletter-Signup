@@ -40,7 +40,7 @@ The live website is being deployed through Heroku and feel free to check it out 
 
 * Body-parser **_1.19.0_**
 
-* EJS **_3.1.5**_
+* EJS **_3.1.5_**
 
 * Dotenv **_8.2.0_**
 
